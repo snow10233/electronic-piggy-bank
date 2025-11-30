@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>使用者存錢紀錄</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            #mainbutton {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center; /* 讓按鈕在不同螢幕上居中排列 */
+                margin: 10px;
+            }
+            button {
+                width: 75px; /* 使用固定寬度 */
+                height: 40px;
+                border-radius: 18px;
+                cursor: pointer;
+                border: 1px solid gray;
+                -webkit-tap-highlight-color: transparent;
+            }
+            button:active {
+                background-color: rgb(200, 200, 200);
+            }
+            table {
+                width: 95%;
+                margin: auto;
+                border-collapse: collapse;/* 合併邊框 */
+            }
+            td {
+                border: 1px solid gray;
+                padding: auto;
+                text-align: center;
+            }
+            p{
+                text-align: center;
+            }
+            #div_input-cost, #div_input-name{
+                display: flex; /* 使用彈性盒模型讓元素排列在同一行 */
+                align-items: center; /* 垂直置中 */
+                gap: 10px; /* 元素間距 */
+                justify-content: center;
+                margin: 20px auto;
+                text-align: center;
+            }
+            input{
+                height: 20px;
+                padding: 5px;
+                font-size: 16px;
+                text-align: center;
+            }            
+            #input_button-cost, #input_button-name{
+                height: 40px;
+                padding: 5px 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .pagebutton{
+                width: 35px; /* 使用固定寬度 */
+                height: 35px;
+                border-radius: 20px;
+                cursor: pointer;
+                border: 1px solid gray;
+                -webkit-tap-highlight-color: transparent;
+            }
+            #pagination{
+                text-align: center;
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="user_name"></p>
+        <div id="mainbutton">
+            <button id="button-date" onclick="
+                date_s = !date_s
+                state = date_s ? 'date' : 'date-desc';
+                button_text(state);
+                fetchMoneyData(state);
+            ">依日期</button>
+            <button id="button-time" onclick="
+                time_s = !time_s
+                state = time_s ? 'time' : 'time-desc';
+                button_text(state);
+                fetchMoneyData(state);
+            ">依時間</button>
+            <button id="button-money" onclick="
+                money_s = !money_s
+                state = money_s ? 'money' : 'money-desc';
+                button_text(state);
+                fetchMoneyData(state);
+            ">依單筆</button>
+            <button id="button-total" onclick="
+                total_s = !total_s
+                state = total_s ? 'total' : 'total-desc';
+                fetchMoneyData(state);
+                button_text(state);
+            ">依總額</button>
+            <button id="button-exchange" onclick="
+                change_s = !change_s
+                document.querySelector('#button-exchange').innerText = change_s ? '轉匯(美)' : '轉匯(台)';
+                fetchMoneyData(state);
+            ">轉匯(台)</button>
+            <button id="button-rank" onclick="
+                rank = !rank;
+                state =  rank ? 'rank' : 'date-desc';
+                fetchMoneyData(state);
+                button_text(state);
+            ">成員排行</button>
+            <button id="button-cost" onclick="
+                switchinput('cost');
+            ">修改總額</button>
+            <button id="button-name" onclick="
+                switchinput('name');
+            ">修改名稱</button>
+        </div>
+
+        <div id="div_input-cost">
+            <input id="input-cost" type="text" placeholder="請輸入取出的金額">
+            <button id="input_button-cost" onclick="
+                let cost_value = document.querySelector('#input-cost').value;
+                document.querySelector('#input-cost').value = '';
+                fetchMoneyData(state, cost_value, 'cost');
+            ">確認</button>
+        </div>
+
+        <div id="div_input-name">
+            <input id="input-name" type="text" placeholder="請輸入想改的名稱">
+            <button id="input_button-name" onclick="
+                let name_value = document.querySelector('#input-name').value;
+                document.querySelector('#input-name').value = '';
+                fetchMoneyData(state, name_value, 'name');
+            ">確認</button>
+        </div>
+
+        <table class="save_data">
+        </table>
+        <div id="pagination"></div>
+        <br/>
+        <script src="script.js"></script>
+    </body>
+</html>
