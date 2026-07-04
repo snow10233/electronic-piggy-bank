@@ -1,0 +1,156 @@
+:root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --border: #d7dce2;
+    --text: #1f2933;
+    --muted: #637083;
+    --accent: #1f7a68;
+    --accent-pressed: #176354;
+    --danger: #b42318;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, "Noto Sans TC", sans-serif;
+}
+
+.app-shell {
+    width: min(1080px, 100%);
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.toolbar {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.user-name {
+    min-height: 28px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    min-width: 86px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    border-color: var(--accent);
+}
+
+button:active,
+button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.input-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+input {
+    width: min(320px, 70vw);
+    height: 40px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    min-width: 96px;
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0 0;
+}
+
+.page-button {
+    min-width: 38px;
+    width: 38px;
+    height: 36px;
+}
+
+.error {
+    color: var(--danger);
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .app-shell {
+        padding: 16px 10px 32px;
+    }
+
+    button {
+        min-width: calc(50% - 8px);
+    }
+
+    .page-button {
+        min-width: 38px;
+        width: 38px;
+    }
+}

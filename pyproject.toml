@@ -1,0 +1,20 @@
+[project]
+name = "electronic-piggy-bank"
+version = "0.1.0"
+description = "Flask backend for the electronic piggy bank project."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0,<4",
+    "flask-cors>=4.0,<5",
+    "mysql-connector-python>=9.0,<10",
+    "numpy>=2.0,<3",
+    "opencv-contrib-python>=4.10,<5",
+    "python-dotenv>=1.0,<2",
+    "pyserial>=3.5,<4",
+    "requests>=2.32,<3",
+    "pyproject-toml>=0.1.0",
+]
+
+[tool.uv]
+package = false

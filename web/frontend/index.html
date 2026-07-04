@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>電子存錢筒</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <main class="app-shell">
+            <header class="toolbar">
+                <p id="user-name" class="user-name"></p>
+                <div class="actions" aria-label="資料操作">
+                    <button data-sort="date" type="button">依日期</button>
+                    <button data-sort="time" type="button">依時間</button>
+                    <button data-sort="money" type="button">依單筆</button>
+                    <button data-sort="total" type="button">依總額</button>
+                    <button id="exchange-button" type="button">轉匯(台)</button>
+                    <button id="rank-button" type="button">成員排行</button>
+                    <button data-panel="cost" type="button">修改總額</button>
+                    <button data-panel="name" type="button">修改名稱</button>
+                </div>
+            </header>
+
+            <section id="cost-panel" class="input-row hidden">
+                <input id="cost-input" type="number" min="0" placeholder="請輸入取出的金額" />
+                <button id="cost-submit" type="button">確認</button>
+            </section>
+
+            <section id="name-panel" class="input-row hidden">
+                <input id="name-input" type="text" placeholder="請輸入想改的名稱" />
+                <button id="name-submit" type="button">確認</button>
+            </section>
+
+            <div class="table-wrap">
+                <table id="money-table" class="save-data"></table>
+            </div>
+            <nav id="pagination" class="pagination" aria-label="分頁"></nav>
+        </main>
+
+        <script src="app.js"></script>
+    </body>
+</html>
